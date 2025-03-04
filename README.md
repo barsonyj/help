@@ -1,3 +1,5 @@
 ## Súgó fájlok
 
-> Backend Programozás és Tesztelés
+> Backend programozás és tesztelés
+
+- Környezeti változók használata

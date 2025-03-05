@@ -39,10 +39,7 @@
   PORT = 88
 * const port = process.env.PORT;  
   const port = process.env.PORT || 88;
-
-// VAGY lehet külső modullal is:
-// * pnpm install dotenv
-// * import dotenv from 'dotenv';
-//   dotenv.config();
-//   const port = process.env.PORT;
-//   const port = process.env.PORT || 5000;
+* // VAGY lehet külső modullal is:  
+  // * pnpm install dotenv  
+  // * import dotenv from 'dotenv';  
+  //   dotenv.config();

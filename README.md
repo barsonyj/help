@@ -9,7 +9,8 @@
 > [!NOTE]
 > **BPT / Környezeti változók**
 
-```* A "process" Node.js core modul tartalmaz egy "env" tulajdonságot,  
+```
+* A "process" Node.js core modul tartalmaz egy "env" tulajdonságot,  
   amely tartalmazza a beállított környezeti változókat: process.env.VARIABLE;  
   Beállítani legegyszerűbben a futtatáskor paraméterben átadott .env fájllal lehet:  
   - node --env-file=.env index.js
@@ -21,7 +22,8 @@
 * .env (adjuk meg a .gitignore fájlban!)  
   PORT = 88
 * const port = process.env.PORT;  
-  const port = process.env.PORT || 88;```
+  const port = process.env.PORT || 88;
+```
 
 > [!NOTE]
 > **FPT / React-router-dom**

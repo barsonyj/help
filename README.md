@@ -1,13 +1,14 @@
 ## Súgó fájlok
 
 ### Backend programozás és tesztelés
-- Környezeti változók ([Bpt_environment.txt](https://barsonyj.github.io/help/bpt/Bpt_environment.txt))
+- Környezeti változók ([ugrás](#bpt_environment))
 
 ### Frontend programozás és tesztelés
 - React-router-dom ()
 
+<a name="bpt_environment"></a>
 > [!NOTE]
-> **BPT / ####Környezeti változók**
+> **BPT / Környezeti változók**
 
 ```
 * A "process" Node.js core modul tartalmaz egy "env" tulajdonságot,
@@ -25,6 +26,7 @@
   const port = process.env.PORT || 88;
 ```
 
+<a name="fpt_react_router_dom"></a>
 > [!NOTE]
 > **FPT / ####React-router-dom**
 

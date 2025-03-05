@@ -30,19 +30,19 @@
 
 ```
 * pnpm install react-router-dom
-* import { createBrowserRouter, RouterProvider } from "react-router-dom";
+* import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 * const router = createBrowserRouter([
-   { element: &lt;Layout />, children: [
-    { path: "/", element: &lt;Home /> },
-    { path: "/two", element: &lt;Two /> },
-    { path: "/about", element: &lt;About /> },
-    { path: "*", element: &lt;Notfound /> }
+   { element: <Layout />, children: [
+    { path: "/", element: <Home /> },
+    { path: "/two", element: <Two /> },
+    { path: "/about", element: <About /> },
+    { path: "*", element: <Notfound /> }
    ]}
   ]);
-* &lt;RouterProvider router={router} />
-  &lt;Outlet />
-* &lt;Link to="/about">About</Link> // rá kell kattintani
-  &lt;Navigate to="/about" /> // nem kell rákattintani
+* <RouterProvider router={router} />
+  <Outlet />
+* <Link to="/about">About</Link> // rá kell kattintani
+  <Navigate to="/about" /> // nem kell rákattintani
   const navigate = useNavigate();
   navigate("/about", { replace: true });
 * const { pathname, search, hash } = useLocation();

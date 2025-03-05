@@ -6,17 +6,17 @@
 - Környezeti változók ([Bpt_environment.txt](https://barsonyj.github.io/help/bpt/Bpt_environment.txt))
 
 > [!NOTE]
-> React-router-dom
+> **React-router-dom**
 
  * pnpm install react-router-dom
  * import { createBrowserRouter, RouterProvider } from "react-router-dom";
  * const router = createBrowserRouter([  
-     { element: &lt;Layout />, children: [  
-       { path: "/", element: &lt;Home /> },  
-       { path: "/two", element: &lt;Two /> },  
-       { path: "/about", element: &lt;About /> },  
-       { path: "*", element: &lt;Notfound /> }  
-     ]}  
+   &nbsp;{ element: &lt;Layout />, children: [  
+   &nbsp;&nbsp;{ path: "/", element: &lt;Home /> },  
+   &nbsp;&nbsp;{ path: "/two", element: &lt;Two /> },  
+   &nbsp;&nbsp;{ path: "/about", element: &lt;About /> },  
+   &nbsp;&nbsp;{ path: "*", element: &lt;Notfound /> }  
+   &nbsp;]}  
    ]);  
  * <RouterProvider router={router} />  
    <Outlet />

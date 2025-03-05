@@ -30,11 +30,19 @@
 > [!NOTE]
 > **Környezeti változók**
 
-* A "process" modul egy Node.js core modul,  
-  amit CSAK a node.exe futtatási környezetben tudunk elérni, böngészőben NEM!  
-  Egy Vite project a dotenv modul segítségével tud beolvasni környezeti változót,  
-  a projektmappa gyökerében lévő .env fájlból, de alapesetben csak a VITE_ előtaggal!
-* .env (adjuk meg a .gitignore fájlban!)
-   VITE_HOST = "http://localhost:88/"
-* const host = import.meta.env.VITE_HOST;
+* A "process" Node.js core modul tartalmaz egy "env" tulajdonságot,  
+  amely tartalmazza a beállított környezeti változókat: process.env.VARIABLE;  
+  Beállítani legegyszerűbben a futtatáskor paraméterben átadott .env fájllal lehet:  
+  - node --env-file=.env index.js  
+  - node --env-file-if-exists=.env index.js  
+* .env (adjuk meg a .gitignore fájlban!)  
+  PORT = 88
+* const port = process.env.PORT;  
+  const port = process.env.PORT || 88;
 
+// VAGY lehet külső modullal is:
+// * pnpm install dotenv
+// * import dotenv from 'dotenv';
+//   dotenv.config();
+//   const port = process.env.PORT;
+//   const port = process.env.PORT || 5000;

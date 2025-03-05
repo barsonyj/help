@@ -6,21 +6,22 @@
 - Környezeti változók ([Bpt_environment.txt](https://barsonyj.github.io/help/bpt/Bpt_environment.txt))
 
 > [!NOTE] React-router-dom
+> 
 
  * pnpm install react-router-dom
  * import { createBrowserRouter, RouterProvider } from "react-router-dom";
  * const router = createBrowserRouter([  
-     { element: <Layout />, children: [  
-       { path: "/", element: <Home /> },  
-       { path: "/two", element: <Two /> },  
-       { path: "/about", element: <About /> },  
-       { path: "*", element: <Notfound /> }  
+     { element: &lt;Layout />, children: [  
+       { path: "/", element: &lt;Home /> },  
+       { path: "/two", element: &lt;Two /> },  
+       { path: "/about", element: &lt;About /> },  
+       { path: "*", element: &lt;Notfound /> }  
      ]}  
    ]);  
  * <RouterProvider router={router} />  
    <Outlet />
- * <Link to="/about">About</Link> // rá kell kattintani  
-   <Navigate to="/about" /> // nem kell rákattintani  
+ * &lt;Link to="/about">About</Link> // rá kell kattintani  
+   &lt;Navigate to="/about" /> // nem kell rákattintani  
    const navigate = useNavigate();  
    navigate("/about", { replace: true });  
  * const { pathname, search, hash } = useLocation();  

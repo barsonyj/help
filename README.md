@@ -28,7 +28,7 @@
 
 <a name="fpt_react_router_dom"></a>
 > [!NOTE]
-> **FPT / ####React-router-dom**
+> **FPT / React-router-dom**
 
 ```
 * pnpm install react-router-dom

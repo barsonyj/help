@@ -34,9 +34,7 @@
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 * const snap = await getDoc(doc(db, "collectionID", "documentID"));
-  if (snap.exists()) console.log(snap.data());
   const snap = await getDocs(collection(db, "collectionID"));
-  const lst = snap.docs.map(doc => ({ ...doc.data(), id:doc.id }));
   const snap = await getDocs(query(collection(db, "collectionID"), where("field", "==", value)), orderBy("field"));
   const lst = snap.docs.map(doc => ({ ...doc.data(), id:doc.id }));
 * await setDoc(doc(db, "collectionID", "documentID"), {field:value, field:value}); // ID!

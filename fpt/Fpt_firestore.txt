@@ -1,0 +1,27 @@
+
+ * pnpm install firebase
+
+ * import { initializeApp } from "firebase/app";
+   import { getFirestore } from "firebase/firestore"; // NEM /lite!!!
+   import { firebaseConfig } from "/firebaseConfig.js"; // .gitignore!
+   const app = initializeApp(firebaseConfig);
+   const db = getFirestore(app);
+
+ * const snap = await getDoc(doc(db, "collectionID", "documentID"));
+   const snap = await getDocs(collection(db, "collectionID"));
+   const snap = await getDocs(query(collection(db, "collectionID"), where("field", "==", value)), orderBy("field"));
+   const lst = snap.docs.map(doc => ({ ...doc.data(), id:doc.id }));
+
+ * await setDoc(doc(db, "collectionID", "documentID"), {field:value, field:value}); // ID!
+   await addDoc(collection(db, "collectionID"), {field:value, field:value}); // AutoID
+
+ * await updateDoc(doc(db, "collectionID", "documentID"), {field:value});
+
+ * await deleteDoc(doc(db, "collectionID", "documentID"));
+
+ * useEffect(() => {
+     const unsub = onSnapshot(collection(db, 'collectionID'), (snap) => {
+       setFunction(snap.docs.map(doc => ({ ...doc.data(), id:doc.id })));
+     });
+     return unsub;
+   },[]);

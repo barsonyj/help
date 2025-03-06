@@ -1,0 +1,39 @@
+
+ 0. pnpm install react-router-dom
+
+ 1. import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+ 2. const router = createBrowserRouter([
+      { element: <Layout />, children: [
+        { path: "/", element: <Home /> },
+        { path: "/two", element: <Two /> },
+        { path: "/about", element: <About /> },
+        { path: "*", element: <Notfound /> }
+      ]}
+    ]);
+
+ 3. <RouterProvider router={router} />
+    <Outlet />
+
+ 4. <Link to="/about">About</Link> // rá kell kattintani
+    <NavLink?
+    <Navigate to="/about" /> // nem kell rákattintani
+    const navigate = useNavigate();
+    navigate("/about", { replace: true });
+
+ 5. const { pathname, search, hash } = useLocation();
+    const params = useParams(); // path: "/users/:id" + /users/42 -> { id:42 }
+ 
+    window.location.href: "http://localhost:88/users?id=3#2"
+    window.location.protocol: "http:"
+    window.location.hostname: "localhost"
+    window.location.port: "88"
+    window.location.pathname: "/users"
+    window.location.search: "?id=3"
+    window.location.hash: "#2"
+    // ​window.location.host: "localhost:88"
+​    // window.location.origin: "http://localhost:88"
+​
+ +. const ThemeContext = createContext(null);
+    <ThemeContext.Provider value="dark">...</ThemeContext.Provider>
+    const theme = useContext(ThemeContext);

@@ -6,15 +6,14 @@
 <a name="bpt_mysql"></a>
 > [!NOTE]
 > **BPT / MySQL**
-
 ```
 * pnpm install mysql2
 * con = await mysql.createConnection({ // try-catch
-   host: "localhost",
-   port: 3306,
-   database: "adatbazis",
-   user: "root",
-   password: ""
+    host: "localhost",
+    port: 3306,
+    database: "adatbazis",
+    user: "root",
+    password: ""
   });
 * const [ json ] = await con.query(sql); // try-catch
   const [ json ] = await con.execute(sql, [parameterek]); // try-catch
@@ -33,20 +32,14 @@
   const db = getFirestore(app);
 * const snap = await getDoc(doc(db, "collectionID", "documentID"));
   if (snap.exists()) console.log(snap.data());
-
   const snap = await getDocs(collection(db, "collectionID"));
   const lst = snap.docs.map(doc => ({ ...doc.data(), id:doc.id }));
-
   const snap = await getDocs(query(collection(db, "collectionID"), where("field", "==", value)), orderBy("field"));
   const lst = snap.docs.map(doc => ({ ...doc.data(), id:doc.id }));
-
 * await setDoc(doc(db, "collectionID", "documentID"), {field:value, field:value}); // ID!
   await addDoc(collection(db, "collectionID"), {field:value, field:value}); // AutoID
-
 * await updateDoc(doc(db, "collectionID", "documentID"), {field:value});
-
 * await deleteDoc(doc(db, "collectionID", "documentID"));
-
 * useEffect(() => {
     const unsub = onSnapshot(collection(db, 'collectionID'), (snap) => {
       setFunction(snap.docs.map(doc => ({ ...doc.data(), id:doc.id })));

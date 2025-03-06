@@ -1,11 +1,13 @@
 ## Backend programozás és tesztelés
 - MySQL ([ugrás](#bpt_mysql))
-- Firebase ([ugrás](#bpt_firebase))
+- Firestore ([ugrás](#bpt_firestore))
+- Firebase Authentication ([ugrás](#bpt_firebase_auth))
 - Környezeti változók ([ugrás](#bpt_environment))
 
 <a name="bpt_mysql"></a>
 > [!NOTE]
 > **BPT / MySQL**
+
 ```
 * pnpm install mysql2
 * con = await mysql.createConnection({ // try-catch
@@ -19,15 +21,15 @@
   const [ json ] = await con.execute(sql, [parameterek]); // try-catch
 ```
 
-<a name="bpt_firebase"></a>
+<a name="bpt_firestore"></a>
 > [!NOTE]
-> **BPT / Firebase**
+> **BPT / Firestore**
 
 ```
 * pnpm install firebase
 * import { initializeApp } from "firebase/app";
   import { getFirestore } from "firebase/firestore"; // NEM /lite!!!
-  const firebaseConfig = { ... }; // :)))
+  import { firebaseConfig } from "/firebaseConfig.js"; // .gitignore!
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 * const snap = await getDoc(doc(db, "collectionID", "documentID"));
@@ -46,6 +48,25 @@
     });
     return unsub;
   },[]);
+```
+
+<a name="bpt_environment"></a>
+> [!NOTE]
+> **BPT / Firebase Authentication**
+
+```
+* pnpm install firebase
+* import { initializeApp } from "firebase/app";
+  import { firebaseConfig } from "/firebaseConfig.js"; // .gitignore!
+  const app = initializeApp(firebaseConfig);
+* import { getAuth } from "firebase/auth";
+  const auth = getAuth(app);
+* await signInWithEmailAndPassword(auth, email, password);
+  await signInWithPopup(auth, new GoogleAuthProvider());
+* const [user, setUser] = useState({});
+  const unsubscribe = onAuthStateChanged(auth, (currentUser) => setUser(currentUser));
+  {user ? <Valami /> : <Login />}
+* await signOut(auth);
 ```
 
 <a name="bpt_environment"></a>

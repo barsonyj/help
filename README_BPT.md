@@ -1,5 +1,6 @@
 ## Backend programozás és tesztelés
 - MySQL ([ugrás](#bpt_mysql))
+- Firebase ([ugrás](#bpt_firebase))
 - Környezeti változók ([ugrás](#bpt_environment))
 
 <a name="bpt_mysql"></a>
@@ -19,6 +20,41 @@
   const [ json ] = await con.execute(sql, [parameterek]); // try-catch
 ```
 
+<a name="bpt_firebase"></a>
+> [!NOTE]
+> **BPT / Firebase**
+
+```
+* pnpm install firebase
+* import { initializeApp } from "firebase/app";
+  import { getFirestore } from "firebase/firestore"; // NEM /lite!!!
+  const firebaseConfig = { ... }; // :)))
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+* const snap = await getDoc(doc(db, "collectionID", "documentID"));
+  if (snap.exists()) console.log(snap.data());
+
+  const snap = await getDocs(collection(db, "collectionID"));
+  const lst = snap.docs.map(doc => ({ ...doc.data(), id:doc.id }));
+
+  const snap = await getDocs(query(collection(db, "collectionID"), where("field", "==", value)), orderBy("field"));
+  const lst = snap.docs.map(doc => ({ ...doc.data(), id:doc.id }));
+
+* await setDoc(doc(db, "collectionID", "documentID"), {field:value, field:value}); // ID!
+  await addDoc(collection(db, "collectionID"), {field:value, field:value}); // AutoID
+
+* await updateDoc(doc(db, "collectionID", "documentID"), {field:value});
+
+* await deleteDoc(doc(db, "collectionID", "documentID"));
+
+* useEffect(() => {
+    const unsub = onSnapshot(collection(db, 'collectionID'), (snap) => {
+      setFunction(snap.docs.map(doc => ({ ...doc.data(), id:doc.id })));
+    });
+    return unsub;
+  },[]);
+```
+
 <a name="bpt_environment"></a>
 > [!NOTE]
 > **BPT / Környezeti változók**
@@ -29,10 +65,10 @@
   Beállítani legegyszerűbben a futtatáskor paraméterben átadott .env fájllal lehet:
   - node --env-file=.env index.js
   - node --env-file-if-exists=.env index.js
-  - // VAGY lehet külső modullal is:
-    // * pnpm install dotenv
-    // * import dotenv from 'dotenv';
-    //   dotenv.config();
+  // VAGY lehet külső modullal is:
+  // * pnpm install dotenv
+  // * import dotenv from 'dotenv';
+  //   dotenv.config();
 * .env (adjuk meg a .gitignore fájlban!)
   PORT = 88
 * const port = process.env.PORT;

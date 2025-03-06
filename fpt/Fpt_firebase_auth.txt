@@ -1,0 +1,18 @@
+
+ * pnpm install firebase
+
+ * import { initializeApp } from "firebase/app";
+   import { firebaseConfig } from "/firebaseConfig.js"; // .gitignore!
+   const app = initializeApp(firebaseConfig);
+
+ * import { getAuth } from "firebase/auth";
+   const auth = getAuth(app);
+
+ * await signInWithEmailAndPassword(auth, email, password);
+   await signInWithPopup(auth, new GoogleAuthProvider());
+
+ * const [user, setUser] = useState({});
+   const unsubscribe = onAuthStateChanged(auth, (currentUser) => setUser(currentUser));
+   {user ? <Valami /> : <Login />}
+
+ * await signOut(auth);

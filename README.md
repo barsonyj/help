@@ -4,6 +4,7 @@
 - Környezeti változók ([ugrás](#bpt_environment))
 ### Frontend programozás és tesztelés
 - React-router-dom ([ugrás](#fpt_react_router_dom))
+- Axios ([ugrás](#fpt_axios))
 - Firestore ([ugrás](#fpt_firestore))
 - Firebase Authentication ([ugrás](#fpt_firebase_auth))
 
@@ -68,6 +69,29 @@
   navigate("/about", { replace: true });
 * const { pathname, search, hash } = useLocation();
   const params = useParams(); // path: "/users/:id" + /users/42 -> { id:42 }
+```
+
+<a name="fpt_axios"></a>
+> [!NOTE]
+> **FPT / Axios**
+
+```
+* pnpm install axios
+* const response = await axios.get("http://localhost:88/users");
+  const { data } = await axios.get("http://localhost:88/users");
+* axios.get(url);
+  axios.post(url, body);
+  axios.put(url, body);
+  axios.patch(url, body);
+  axios.delete(url);
+* response = {
+    data: {},
+    status: 200,
+    statusText: 'OK',
+    headers: {},
+    config: {},
+    request: {}
+  };
 ```
 
 <a name="fpt_firestore"></a>

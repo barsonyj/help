@@ -49,7 +49,7 @@
   },[]);
 ```
 
-<a name="bpt_environment"></a>
+<a name="bpt_firebase_auth"></a>
 > [!NOTE]
 > **BPT / Firebase Authentication**
 

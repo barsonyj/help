@@ -135,7 +135,7 @@
 * await signInWithEmailAndPassword(auth, email, password);
   await signInWithPopup(auth, new GoogleAuthProvider());
 * const [user, setUser] = useState({});
-  const unsubscribe = onAuthStateChanged(auth, (currentUser) => setUser(currentUser));
+  const unsubscribe = onAuthStateChanged(auth, (currentUser) => setUser(currentUser)); // useEffect!
   {user ? <Valami /> : <Login />}
 * await signOut(auth);
 ```

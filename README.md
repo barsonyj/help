@@ -112,6 +112,7 @@
 * await setDoc(doc(db, "collectionID", "documentID"), {field:value, field:value}); // ID!
   await addDoc(collection(db, "collectionID"), {field:value, field:value}); // AutoID
   let ido = Timestamp.now().toDate(); // import { Timestamp } from 'firebase/firestore';
+  // Timestamp.now() => { seconds: 1767956338, nanoseconds: 745000000 } !!!
 * await updateDoc(doc(db, "collectionID", "documentID"), {field:value});
 * await deleteDoc(doc(db, "collectionID", "documentID"));
 * useEffect(() => {

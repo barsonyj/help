@@ -109,6 +109,7 @@
   const snap = await getDocs(collection(db, "collectionID"));
   const snap = await getDocs(query(collection(db, "collectionID"), where("field", "==", value)), orderBy("field"));
   const lst = snap.docs.map(doc => ({ ...doc.data(), id:doc.id }));
+  let ido = new Date(idomezo.seconds * 1000).toLocaleString();
 * await setDoc(doc(db, "collectionID", "documentID"), {field:value, field:value}); // ID!
   await addDoc(collection(db, "collectionID"), {field:value, field:value}); // AutoID
   let ido = Timestamp.now().toDate(); // import { Timestamp } from 'firebase/firestore';

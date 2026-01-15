@@ -117,7 +117,8 @@
 * await updateDoc(doc(db, "collectionID", "documentID"), {field:value});
 * await deleteDoc(doc(db, "collectionID", "documentID"));
 * useEffect(() => {
-    const unsub = onSnapshot(collection(db, 'collectionID'), (snap) => {
+    // const unsub = onSnapshot(doc(db, "collectionID", "documentID"), (snap) => {
+    const unsub = onSnapshot(collection(db, "collectionID"), (snap) => {
       setFunction(snap.docs.map(doc => ({ ...doc.data(), id:doc.id })));
     });
     return unsub;

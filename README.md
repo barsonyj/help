@@ -55,13 +55,14 @@
 * pnpm i multer
 * import multer from "multer";
 * const upload = multer({ dest: "upload", limits: { fileSize: 8*1024 } }); // v1.0
-  const storage = multer.diskStorage({
+* const storage = multer.diskStorage({
    destination: (req, file, cb) => cb(null, 'upload'),
    filename: (req, file, cb) => cb(null, file.originalname)
   });
   const upload = multer({ storage:storage, limits: { fileSize: 8*1024 } }); // v2.0
-  const storage = multer.memoryStorage(); // v3.0   
-* app.post("/upload", upload.single("fajl"), uploadFajl);
+* const storage = multer.memoryStorage();
+  const upload = multer({ storage:storage }); // v3.0
+* app.post("/upload", upload.single("fieldname"), uploadFajl);
   // console.log(req.file); -> fieldname:, originalname:, mimetype:, filename:, size:, ...
   upload.none() // Nem dolgozza fel a fájlokat
   upload.single("fieldname") // Csak a "fieldname" paraméterben kapottat -> req.file

@@ -8,6 +8,7 @@
 - Axios ([ugrás](#fpt_axios))
 - Firestore ([ugrás](#fpt_firestore))
 - Firebase Authentication ([ugrás](#fpt_firebase_auth))
+- FormData ([ugrás](#fpt_formdata))
 
 <a name="bpt_mysql"></a>
 > [!NOTE]
@@ -166,4 +167,18 @@
   const unsubscribe = onAuthStateChanged(auth, (currentUser) => setUser(currentUser)); // useEffect!
   {user ? <Valami /> : <Login />}
 * await signOut(auth);
+```
+
+<a name="fpt_formdata"></a>
+> [!NOTE]
+> **FPT / FormData**
+
+```
+* <input id='fajl' type='file' accept='.png,.jpg' multiple /> // .hide { display: none; }
+  <label htmlFor='fajl'>Megnyitás</label>
+* onChange={e => setFajl(e.target.files[0])}
+  onChange={e => setFajlok([...e.target.files])}
+* const formData = new FormData();
+  formData.append('fajl', fajl);
+  const resp = await fetch('http://localhost:88/upload', { method: 'POST', body: formData });
 ```

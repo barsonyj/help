@@ -69,6 +69,9 @@
   upload.single("fieldname") // Csak a "fieldname" paraméterben kapottat -> req.file
   upload.array("fieldname", maxCount) // Csak a "fieldname" paraméterben kapottakat -> req.files
   upload.any() // Az összes fájlt feldolgozza -> req.files
+* app.use(express.static('upload'));
+* import fs from 'fs/promises';
+  const files = await fs.readdir('upload');
 ```
 
 <a name="fpt_react_router_dom"></a>

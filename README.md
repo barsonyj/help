@@ -2,6 +2,7 @@
 ### Backend programozás és tesztelés
 - MySQL ([ugrás](#bpt_mysql))
 - Környezeti változók ([ugrás](#bpt_environment))
+- Multer ([ugrás](#bpt_multer))
 ### Frontend programozás és tesztelés
 - React-router-dom ([ugrás](#fpt_react_router_dom))
 - Axios ([ugrás](#fpt_axios))
@@ -44,6 +45,28 @@
   PORT = 88
 * const port = process.env.PORT;
   const port = process.env.PORT || 88;
+```
+
+<a name="bpt_multer"></a>
+> [!NOTE]
+> **BPT / Multer**
+
+```
+* pnpm i multer
+* import multer from "multer";
+* const upload = multer({ dest: "upload", limits: { fileSize: 8*1024 } }); // v1.0
+  const storage = multer.diskStorage({
+   destination: (req, file, cb) => cb(null, 'upload'),
+   filename: (req, file, cb) => cb(null, file.originalname)
+  });
+  const upload = multer({ storage:storage, limits: { fileSize: 8*1024 } }); // v2.0
+  const storage = multer.memoryStorage(); // v3.0   
+* app.post("/upload", upload.single("fajl"), uploadFajl);
+  // console.log(req.file); -> fieldname:, originalname:, mimetype:, filename:, size:, ...
+  upload.none() // Nem dolgozza fel a fájlokat
+  upload.single("fieldname") // Csak a "fieldname" paraméterben kapottat -> req.file
+  upload.array("fieldname", maxCount) // Csak a "fieldname" paraméterben kapottakat -> req.files
+  upload.any() // Az összes fájlt feldolgozza -> req.files
 ```
 
 <a name="fpt_react_router_dom"></a>

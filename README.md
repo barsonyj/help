@@ -95,6 +95,7 @@
   <Navigate to="/about" /> // nem kell rákattintani
   const navigate = useNavigate();
   navigate("/about", { replace: true });
+  <input type="text" onKeyDown={e => { if (e.keyCode == 13) fxHaEnter(); }} />
 * const { pathname, search, hash } = useLocation();
   const params = useParams(); // path: "/users/:id" + /users/42 -> { id:42 }
 ```

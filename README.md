@@ -225,7 +225,9 @@
 ```
 * pnpm i -D vitest jsdom@26 @testing-library/react @testing-library/jest-dom
   + vite.config.js (defineConfig részbe) -> test: { environment: 'jsdom' }
-* import Komponens from "./Komponens";
+* import { describe, test, expect } from "vitest"
+  import { render, screen } from "@testing-library/react"
+  import Komponens from "./Komponens";
   render(<Komponens />); // a screen objektumban "jelenik" meg!
   screen.debug(); // a cleanup(); parancs törli!
 * screen.getBy*: pontosan EGY elem (különben HIBÁT dob)

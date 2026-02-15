@@ -98,7 +98,6 @@
   beforeAll(() => {}); afterAll(() => {}); // a 'describe' elején illetve végén
 * pnpm vitest
 ```
-Linkek: [expect](https://vitest.dev/api/expect.html)
 
 <a name="fpt_react_router_dom"></a>
 > [!NOTE]

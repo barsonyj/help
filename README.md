@@ -87,11 +87,12 @@
   import { fuggvenyneve } from "./eredeti.js";  
 * describe("Tesztcsoport szöveg", () => {
     test("Teszt szöveg", () => {
-      expect(fuggvenyneve(parameterek)).toBe(elvartertek);
+      [expect](https://vitest.dev/api/expect.html)(fuggvenyneve(parameterek)).toBe(elvartertek);
     });
   });
 * .not.toBe(elvartertek);
-  .toBeTruthy(); .toBeFalsy(); .toBeNull();
+  .toBeCloseTo(elvartertek, szamjegyek);
+  .toBeTruthy(); .toBeFalsy(); .toBeNull(); .toBeUndefined();
   .toEqual(objektum);
 * beforeEach(() => {}); afterEach(() => {}); // minden 'test' előtt illetve után
   beforeAll(() => {}); afterAll(() => {}); // a 'describe' elején illetve végén

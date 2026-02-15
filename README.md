@@ -247,8 +247,8 @@
 * import "@testing-library/jest-dom/vitest";
   import * as matchers from "@testing-library/jest-dom/matchers";
   expect.extend(matchers);
-  // .toBeInTheDocument(); .toBeVisible(); .toBeDisabled(); .toBeEnabled(); .toBeChecked();
-  // .toHaveValue(value); .toHaveAttribute(attributename, value); .toHaveClass(classname);
+  .toBeInTheDocument(); .toBeVisible(); .toBeDisabled(); .toBeEnabled(); .toBeChecked();
+  .toHaveValue(value); .toHaveAttribute(attributename, value); .toHaveClass(classname);
 * pnpm vitest
 ```
 

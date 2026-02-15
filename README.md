@@ -219,5 +219,10 @@
   ByAltText: bármihez, aminek van alt tulajdonsága (pl. képek)
   ByTitle: bármihez, aminek van title tulajdonsága (pl. képek, ikonok)
   ByTestId: data-testid tulajdonsággal rendelkező elem keresése
+* import "@testing-library/jest-dom/vitest";
+  import * as matchers from "@testing-library/jest-dom/matchers";
+  expect.extend(matchers);
+  // .toBeInTheDocument(); .toBeVisible(); .toBeDisabled(); .toBeEnabled(); .toBeChecked();
+  // .toHaveValue(value); .toHaveAttribute(attributename, value); .toHaveClass(classname);
 * pnpm vitest
 ```

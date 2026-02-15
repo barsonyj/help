@@ -3,14 +3,14 @@
 - MySQL ([ugrás](#bpt_mysql))
 - Környezeti változók ([ugrás](#bpt_environment))
 - Multer ([ugrás](#bpt_multer))
-- Vitest ([ugrás](#bpt_vitest))
+- Vitest alap ([ugrás](#bpt_vitest))
 ### Frontend programozás és tesztelés
 - React-router-dom ([ugrás](#fpt_react_router_dom))
 - Axios ([ugrás](#fpt_axios))
 - Firestore ([ugrás](#fpt_firestore))
 - Firebase Authentication ([ugrás](#fpt_firebase_auth))
 - FormData ([ugrás](#fpt_formdata))
-- Vitest ([ugrás](#fpt_vitest))
+- Vitest jsdom ([ugrás](#fpt_vitest))
 
 <a name="bpt_mysql"></a>
 > [!NOTE]

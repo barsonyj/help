@@ -3,6 +3,7 @@
 - MySQL ([ugrás](#bpt_mysql))
 - Környezeti változók ([ugrás](#bpt_environment))
 - Multer ([ugrás](#bpt_multer))
+- Vitest ([ugrás](#bpt_vitest))
 ### Frontend programozás és tesztelés
 - React-router-dom ([ugrás](#fpt_react_router_dom))
 - Axios ([ugrás](#fpt_axios))
@@ -73,6 +74,28 @@
 * app.use(express.static('upload'));
 * import fs from 'fs/promises';
   const files = await fs.readdir('upload');
+```
+
+<a name="bpt_vitest"></a>
+> [!NOTE]
+> **BPT / Vitest**
+
+```
+* pnpm install -D vitest
+* eredeti.js -> eredeti.test.js:
+  import { describe, expect, test } from "vitest";
+  import { fuggvenyneve } from "./eredeti.js";  
+* describe("Tesztcsoport szöveg", () => {
+    test("Teszt szöveg", () => {
+      expect(fuggvenyneve(parameterek)).toBe(elvartertek);
+    });
+  });
+* .not.toBe(elvartertek);
+  .toBeTruthy(); .toBeFalsy(); .toBeNull();
+  .toEqual(objektum);
+* beforeEach(() => {}); afterEach(() => {}); // minden 'test' előtt illetve után
+  beforeAll(() => {}); afterAll(() => {}); // a 'describe' elején illetve végén
+* pnpm vitest
 ```
 
 <a name="fpt_react_router_dom"></a>

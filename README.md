@@ -3,14 +3,15 @@
 - MySQL ([ugrás](#bpt_mysql))
 - Környezeti változók ([ugrás](#bpt_environment))
 - Multer ([ugrás](#bpt_multer))
-- Vitest alap ([ugrás](#bpt_vitest))
+- Vitest alap ([ugrás](#bpt_vitest_alap))
 ### Frontend programozás és tesztelés
 - React-router-dom ([ugrás](#fpt_react_router_dom))
 - Axios ([ugrás](#fpt_axios))
 - Firestore ([ugrás](#fpt_firestore))
 - Firebase Authentication ([ugrás](#fpt_firebase_auth))
 - FormData ([ugrás](#fpt_formdata))
-- Vitest jsdom ([ugrás](#fpt_vitest))
+- Vitest jsdom ([ugrás](#fpt_vitest_jsdom))
+- Vitest event ([ugrás](#fpt_vitest_event))
 
 <a name="bpt_mysql"></a>
 > [!NOTE]
@@ -76,9 +77,9 @@
   const files = await fs.readdir('upload');
 ```
 
-<a name="bpt_vitest"></a>
+<a name="bpt_vitest_alap"></a>
 > [!NOTE]
-> **BPT / Vitest**
+> **BPT / Vitest alap**
 
 ```
 * pnpm install -D vitest
@@ -217,9 +218,9 @@
   const resp = await fetch('http://localhost:88/upload', { method: 'POST', body: formData });
 ```
 
-<a name="fpt_vitest"></a>
+<a name="fpt_vitest_jsdom"></a>
 > [!NOTE]
-> **FPT / Vitest**
+> **FPT / Vitest jsdom**
 
 ```
 * pnpm i -D vitest jsdom@26 @testing-library/react @testing-library/jest-dom
@@ -248,5 +249,34 @@
   expect.extend(matchers);
   // .toBeInTheDocument(); .toBeVisible(); .toBeDisabled(); .toBeEnabled(); .toBeChecked();
   // .toHaveValue(value); .toHaveAttribute(attributename, value); .toHaveClass(classname);
+* pnpm vitest
+```
+
+<a name="fpt_vitest_event"></a>
+> [!NOTE]
+> **FPT / Vitest event**
+
+```
+* pnpm install -D @testing-library/user-event
+* import userEvent from "@testing-library/user-event";
+* test('Kattintás', async () => {
+    const user = userEvent.setup();
+    render(<Kompnens />);
+    const button = screen.getByText('Hozzáad');
+    await user.click(button);
+    except(...)
+  });
+* test('Gépelés', async () => {
+    const user = userEvent.setup();
+    render(<MyComponent />);
+    const input = screen.getByPlaceholderText('username');
+    // await user.clear(input);
+    await user.type(input, 'Batman');
+    expect(input).toHaveValue('Batman');
+  });
+* await user.selectOptions(option, 'value'); // Kiválaszt egy option-t a select-ből
+  await user.hover(elem); // Az elem fölé viszi az egérmutatót
+  await user.unhover(elem); // Leviszi az elemről az egérmutatót
+  await user.tab(); // Lenyomja a 'tab' billentyűt (fókusz továbblép)
 * pnpm vitest
 ```

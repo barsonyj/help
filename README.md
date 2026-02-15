@@ -87,7 +87,7 @@
   import { fuggvenyneve } from "./eredeti.js";  
 * describe("Tesztcsoport szöveg", () => {
     test("Teszt szöveg", () => {
-      [expect](https://vitest.dev/api/expect.html)(fuggvenyneve(parameterek)).toBe(elvartertek);
+      expect(fuggvenyneve(parameterek)).toBe(elvartertek);
     });
   });
 * .not.toBe(elvartertek);
@@ -98,6 +98,7 @@
   beforeAll(() => {}); afterAll(() => {}); // a 'describe' elején illetve végén
 * pnpm vitest
 ```
+Linkek: [expect](https://vitest.dev/api/expect.html)
 
 <a name="fpt_react_router_dom"></a>
 > [!NOTE]

@@ -9,6 +9,7 @@
 - Firestore ([ugrás](#fpt_firestore))
 - Firebase Authentication ([ugrás](#fpt_firebase_auth))
 - FormData ([ugrás](#fpt_formdata))
+- Vitest ([ugrás](#fpt_vitest))
 
 <a name="bpt_mysql"></a>
 > [!NOTE]
@@ -165,11 +166,16 @@
   const app = initializeApp(firebaseConfig);
 * import { getAuth } from "firebase/auth";
   const auth = getAuth(app);
+  // const user = auth.currentUser; de inkább useEffect!
+* createUserWithEmailAndPassword(auth, email, password)
 * await signInWithEmailAndPassword(auth, email, password);
   await signInWithPopup(auth, new GoogleAuthProvider());
 * const [user, setUser] = useState({});
-  const unsubscribe = onAuthStateChanged(auth, (currentUser) => setUser(currentUser)); // useEffect!
-  {user ? <Valami /> : <Login />}
+  useEffect(() => {
+    const unsube = onAuthStateChanged(auth, (currentUser) => setUser(currentUser));
+    return unsub;
+  },[]);
+* {user ? <Valami /> : <Login />}
 * await signOut(auth);
 ```
 
@@ -185,4 +191,33 @@
 * const formData = new FormData();
   formData.append('fajl', fajl);
   const resp = await fetch('http://localhost:88/upload', { method: 'POST', body: formData });
+```
+
+<a name="fpt_vitest"></a>
+> [!NOTE]
+> **FPT / Vitest**
+
+```
+* pnpm i -D vitest jsdom@26 @testing-library/react @testing-library/jest-dom
+  + vite.config.js (defineConfig részbe) -> test: { environment: 'jsdom' }
+* import Komponens from "./Komponens";
+  render(<Komponens />); // a screen objektumban "jelenik" meg!
+  screen.debug(); // a cleanup(); parancs törli!
+* screen.getBy*: pontosan EGY elem (különben HIBÁT dob)
+  screen.getAllBy*: TÖMBÖT ad vissza, legalább EGY elem (különben HIBÁT dob)
+  screen.queryBy*: legfeljebb EGY (az ELSŐ passzoló) elem (vagy null, vagy HIBÁT dob)
+  screen.queryAllBy*: TÖMBÖT ad vissza, ami ÜRES, ha nem talál egyet sem
+  screen.findBy*: aszinkron (promise!), pontosan EGY elem (különben HIBÁT dob)
+  screen.findAllBy*: aszinkron (promise!), TÖMBÖT ad vissza, legalább egy elem (különben HIBÁT dob)
+* ByRole('type', {name: /szöveg/i}): adott típusú elemet keres, megadott felirattal
+  // type: button, checkbox, radio, option, img, table, form, ...
+  ByLabelText: űrlapelemekhez, amihez van label tag (vagy bármi, amihez van aria-label)
+  ByPlaceholderText: űrlapelemekhez, amihez van placeholder tulajdonság
+  ByText: olyan elem, amelyikben PONTOSAN a megadott szöveg van (innerText!)
+  // VAGY regex (idézőjel NÉLKÜL!): screen.getByText(/szöveg/i) = szövegrészt keres ignore case
+  ByDisplayValue: űrlapelemekhez, aminek van value tulajdonsága
+  ByAltText: bármihez, aminek van alt tulajdonsága (pl. képek)
+  ByTitle: bármihez, aminek van title tulajdonsága (pl. képek, ikonok)
+  ByTestId: data-testid tulajdonsággal rendelkező elem keresése
+* pnpm vitest
 ```

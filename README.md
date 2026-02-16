@@ -238,6 +238,7 @@
   screen.findAllBy*: aszinkron (promise!), TÖMBÖT ad vissza, legalább egy elem (különben HIBÁT dob)
 * ByRole('type', {name: /szöveg/i}): adott típusú elemet keres, megadott felirattal
   // type: button, checkbox, radio, option, img, table, form, ...
+  // name helyett lehet {checked: true}, {selected: true}, {disabled: true}, ...
   ByLabelText: űrlapelemekhez, amihez van label tag (vagy bármi, amihez van aria-label)
   ByPlaceholderText: űrlapelemekhez, amihez van placeholder tulajdonság
   ByText: olyan elem, amelyikben PONTOSAN a megadott szöveg van (innerText!)
@@ -266,11 +267,11 @@
     render(<Kompnens />);
     const button = screen.getByText('Hozzáad');
     await user.click(button);
-    except(...)
+    expect(...)
   });
 * test('Gépelés', async () => {
     const user = userEvent.setup();
-    render(<MyComponent />);
+    render(<Kompnens />);
     const input = screen.getByPlaceholderText('username');
     // await user.clear(input);
     await user.type(input, 'Batman');

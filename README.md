@@ -1,17 +1,18 @@
 ## Súgó fájlok
-### Backend programozás és tesztelés
+### Backend programozás (express)
 - MySQL ([ugrás](#bpt_mysql))
 - Környezeti változók ([ugrás](#bpt_environment))
 - Multer ([ugrás](#bpt_multer))
-- Vitest alap ([ugrás](#bpt_vitest_alap))
-### Frontend programozás és tesztelés
+### Frontend programozás (vite)
 - React-router-dom ([ugrás](#fpt_react_router_dom))
 - Axios ([ugrás](#fpt_axios))
 - Firestore ([ugrás](#fpt_firestore))
 - Firebase Authentication ([ugrás](#fpt_firebase_auth))
 - FormData ([ugrás](#fpt_formdata))
-- Vitest jsdom ([ugrás](#fpt_vitest_jsdom))
-- Vitest event ([ugrás](#fpt_vitest_event))
+### Tesztelés (vitest)
+- Vitest alap ([ugrás](#vitest_alap))
+- Vitest jsdom ([ugrás](#vitest_jsdom))
+- Vitest event ([ugrás](#vitest_event))
 
 <a name="bpt_mysql"></a>
 > [!NOTE]
@@ -75,29 +76,6 @@
 * app.use(express.static('upload'));
 * import fs from 'fs/promises';
   const files = await fs.readdir('upload');
-```
-
-<a name="bpt_vitest_alap"></a>
-> [!NOTE]
-> **BPT / Vitest alap**
-
-```
-* pnpm install -D vitest
-* eredeti.js -> eredeti.test.js:
-  import { describe, expect, test } from "vitest";
-  import { fuggvenyneve } from "./eredeti.js";  
-* describe("Tesztcsoport szöveg", () => {
-    test("Teszt szöveg", () => {
-      expect(fuggvenyneve(parameterek)).toBe(elvartertek);
-    });
-  });
-* .not.toBe(elvartertek);
-  .toBeCloseTo(elvartertek, szamjegyek);
-  .toBeTruthy(); .toBeFalsy(); .toBeNull(); .toBeUndefined();
-  .toEqual(objektum);
-* beforeEach(() => {}); afterEach(() => {}); // minden 'test' előtt illetve után
-  beforeAll(() => {}); afterAll(() => {}); // a 'describe' elején illetve végén
-* pnpm vitest
 ```
 
 <a name="fpt_react_router_dom"></a>
@@ -218,7 +196,30 @@
   const resp = await fetch('http://localhost:88/upload', { method: 'POST', body: formData });
 ```
 
-<a name="fpt_vitest_jsdom"></a>
+<a name="vitest_alap"></a>
+> [!NOTE]
+> **BPT / Vitest alap**
+
+```
+* pnpm install -D vitest
+* eredeti.js -> eredeti.test.js:
+  import { describe, expect, test } from "vitest";
+  import { fuggvenyneve } from "./eredeti.js";  
+* describe("Tesztcsoport szöveg", () => {
+    test("Teszt szöveg", () => {
+      expect(fuggvenyneve(parameterek)).toBe(elvartertek);
+    });
+  });
+* .not.toBe(elvartertek);
+  .toBeCloseTo(elvartertek, szamjegyek);
+  .toBeTruthy(); .toBeFalsy(); .toBeNull(); .toBeUndefined();
+  .toEqual(objektum);
+* beforeEach(() => {}); afterEach(() => {}); // minden 'test' előtt illetve után
+  beforeAll(() => {}); afterAll(() => {}); // a 'describe' elején illetve végén
+* pnpm vitest
+```
+
+<a name="vitest_jsdom"></a>
 > [!NOTE]
 > **FPT / Vitest jsdom**
 
@@ -226,7 +227,7 @@
 * pnpm i -D vitest jsdom@26 @testing-library/react @testing-library/jest-dom
   + vite.config.js (defineConfig részbe) -> test: { environment: 'jsdom' }
 * import { describe, test, expect } from "vitest"
-  import { render, screen } from "@testing-library/react"
+  import { render, screen, cleanup } from "@testing-library/react"
   import Komponens from "./Komponens";
   render(<Komponens />); // a screen objektumban "jelenik" meg!
   screen.debug(); // a cleanup(); parancs törli!
@@ -255,7 +256,7 @@
 * pnpm vitest
 ```
 
-<a name="fpt_vitest_event"></a>
+<a name="vitest_event"></a>
 > [!NOTE]
 > **FPT / Vitest event**
 
@@ -263,17 +264,17 @@
 * pnpm install -D @testing-library/user-event
 * import userEvent from "@testing-library/user-event";
 * test('Kattintás', async () => {
+    render(<Komponens />);
     const user = userEvent.setup();
-    render(<Kompnens />);
     const button = screen.getByText('Hozzáad');
     await user.click(button);
     expect(...)
   });
 * test('Gépelés', async () => {
+    render(<Komponens />);
     const user = userEvent.setup();
-    render(<Kompnens />);
     const input = screen.getByPlaceholderText('username');
-    // await user.clear(input);
+    await user.clear(input);
     await user.type(input, 'Batman');
     expect(input).toHaveValue('Batman');
   });

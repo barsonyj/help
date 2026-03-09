@@ -13,6 +13,7 @@
 - Vitest alap ([ugrás](#vitest_alap))
 - Vitest jsdom ([ugrás](#vitest_jsdom))
 - Vitest event ([ugrás](#vitest_event))
+- Vitest mock ([ugrás](#vitest_mock))
 
 <a name="bpt_mysql"></a>
 > [!NOTE]
@@ -213,7 +214,7 @@
 * .not.toBe(elvartertek);
   .toBeCloseTo(elvartertek, szamjegyek);
   .toBeTruthy(); .toBeFalsy(); .toBeNull(); .toBeUndefined();
-  .toEqual(objektum);
+  .toEqual(tömb vagy objektum);
 * beforeEach(() => {}); afterEach(() => {}); // minden 'test' előtt illetve után
   beforeAll(() => {}); afterAll(() => {}); // a 'describe' elején illetve végén
 * pnpm vitest
@@ -282,5 +283,36 @@
   await user.hover(elem); // Az elem fölé viszi az egérmutatót
   await user.unhover(elem); // Leviszi az elemről az egérmutatót
   await user.tab(); // Lenyomja a 'tab' billentyűt (fókusz továbblép)
+* pnpm vitest
+```
+
+<a name="vitest_mock"></a>
+> [!NOTE]
+> **FPT / Vitest mock**
+
+```
+* import { vi } from "vitest";
+* const mockFn = vi.fn(); // Üres mockFüggvény létrehozása
+  mockFn(2, 'hello'); // mockFüggvény meghívása
+  expect(mockFn).toHaveBeenCalled(); // Meg lett-e hívva
+  expect(mockFn).toHaveBeenCalledTimes(1); // Hányszor lett meghívva
+  expect(mockFn).toHaveBeenCalledWith(2, 'hello'); // Milyen paraméterrel (is) lett meghívva
+  + mockFn.mock.calls.length // A hívások száma
+  + mockFn.mock.calls[index] // A hívások során kapott paraméterek tömbje
+  + mockFn.mock.calls[index][paramIndex] // Egy adott hívás egy adott paramétere
+* const mockFn = vi.fn().mockReturnValue(42); // Beállítjuk mit adjon vissza
+  expect(mockFn()).toBe(42); // A megadott értéket kell visszakapnunk
+* const mockFn = vi.fn().mockResolvedValue('adatok'); // Beállítjuk mit adjon vissza async módon
+  expect(await mockFn()).toBe('adatok'); // A megadott értéket kell visszakapnunk
+* const mockFn = vi.fn((a, b) => a+b); // Átdefiniáljuk az eredeti függvényt
+  utólag is lehet: mockFn.mockImplementation(x => x*2);
+
+* const spy = vi.spyOn(objektumneve, 'metódusneve'); // Metódus megfigyelésének kezdése
+  const spy = vi.spyOn(objektumneve, 'metódusneve').mockReturnValue(mockedValue);
+  const spy = vi.spyOn(objektumneve, 'metódusneve').mockResolvedValue('mockolt adat');
+  const spy = vi.spyOn(objektumneve, 'metódusneve').mockImplementation((a, b) => a+b);
+  spy.mockRestore(); // Az eredeti metódus visszaállítása
+* import * as valami from './komponens'; // valami.fn1(), valami.fn2(), ...
+
 * pnpm vitest
 ```

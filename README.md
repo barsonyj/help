@@ -22,14 +22,14 @@
 ```
 * pnpm install mysql2
 * import mysql from "mysql2/promise";
-* con = await mysql.createConnection({ // try-catch
+* let con = await mysql.createConnection({
     host: "localhost",
     port: 3306,
     database: "adatbazis",
     user: "root",
     password: ""
   });
-* const [ json ] = await con.query(sql); // try-catch
+* const [ json ] = await con.query(sql, [parameterek]); // try-catch
   const [ json ] = await con.execute(sql, [parameterek]); // try-catch
 ```
 

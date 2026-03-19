@@ -14,6 +14,7 @@
 - Vitest jsdom ([ugrás](#vitest_jsdom))
 - Vitest event ([ugrás](#vitest_event))
 - Vitest mock ([ugrás](#vitest_mock))
+- SuperTest ([ugrás](#supertest))
 
 <a name="bpt_mysql"></a>
 > [!NOTE]
@@ -314,5 +315,27 @@
   spy.mockRestore(); // Az eredeti metódus visszaállítása
 * import * as valami from './komponens'; // valami.fn1(), valami.fn2(), ...
 
+* vi.mock('./komponens', () => ({ default: () => <div>Mocked</div> }));
+  import komponensneve from './komponens';
+* vi.mock('./modulneve', () => ({ függvényneve: vi.fn() }));
+  import { függvényneve } from './modulneve';
+* mockFn.mockClear(); // Híváslista törlése
+  mockFn.mockReset(); // Hívások + implementáció törlése
+```
+
+<a name="supertest"></a>
+> [!NOTE]
+> **FPT / SuperTest**
+
+```
+* pnpm install -D supertest
+* import request from "supertest";
+* let res = await request(app).get(path);
+  let res = await request(app).post(path).send(obj);
+  let res = await request(app).put(path).send(obj);
+  let res = await request(app).delete(path);
+* expect(res.statusCode).toBe(200);
+  expect(res.body).toEqual(obj);
+  expect(res.text).toBe("szöveg");
 * pnpm vitest
 ```

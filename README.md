@@ -139,7 +139,7 @@
   const db = getFirestore(app);
 * const snap = await getDoc(doc(db, "collectionID", "documentID"));
   const snap = await getDocs(collection(db, "collectionID"));
-  const snap = await getDocs(query(collection(db, "collectionID"), where("field", "==", value)), orderBy("field"));
+  const snap = await getDocs(query(collection(db, "collectionID"), where("field", "==", value), orderBy("field")));
   const list = snap.docs.map(doc => ({ ...doc.data(), id:doc.id }));
   let date = new Date(timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000); // .toLocaleString();
 * await setDoc(doc(db, "collectionID", "documentID"), {field:value, field:value}); // ID!
@@ -149,8 +149,8 @@
 * await updateDoc(doc(db, "collectionID", "documentID"), {field:value});
 * await deleteDoc(doc(db, "collectionID", "documentID"));
 * useEffect(() => {
-    // const unsub = onSnapshot(doc(db, "collectionID", "documentID"), (snap) => {
-    const unsub = onSnapshot(collection(db, "collectionID"), (snap) => {
+    // const unsub = onSnapshot(collection(db, "collectionID"), (snap) => {
+    const unsub = onSnapshot(query(collection(db, "collectionID"), orderBy("field")), (snap) => {
       setFunction(snap.docs.map(doc => ({ ...doc.data(), id:doc.id })));
     });
     return unsub;

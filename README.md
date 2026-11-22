@@ -169,7 +169,7 @@
 * import { getAuth } from "firebase/auth";
   const auth = getAuth(app);
   // const user = auth.currentUser; de inkább useEffect!
-* createUserWithEmailAndPassword(auth, email, password)
+* await createUserWithEmailAndPassword(auth, email, password);
 * await signInWithEmailAndPassword(auth, email, password);
   await signInWithPopup(auth, new GoogleAuthProvider());
 * const [user, setUser] = useState({}); // -> { uid, displayName, email, photoURL }

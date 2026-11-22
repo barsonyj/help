@@ -100,7 +100,7 @@
 * <Link to="/about">About</Link> // rá kell kattintani
   <Navigate to="/about" /> // nem kell rákattintani
   const navigate = useNavigate();
-  navigate("/about", { replace: true });
+  navigate("/about", { replace: false });
   <input type="text" onKeyDown={e => { if (e.keyCode == 13) fxHaEnter(); }} />
 * const { pathname, search, hash } = useLocation();
   const params = useParams(); // path: "/users/:id" + /users/42 -> { id:42 }
@@ -120,12 +120,9 @@
   axios.patch(url, body);
   axios.delete(url);
 * response = {
-    data: {},
+    data: {}, headers: {}, config: {}, request: {},
     status: 200,
-    statusText: 'OK',
-    headers: {},
-    config: {},
-    request: {}
+    statusText: 'OK'
   };
 ```
 
@@ -175,12 +172,13 @@
 * createUserWithEmailAndPassword(auth, email, password)
 * await signInWithEmailAndPassword(auth, email, password);
   await signInWithPopup(auth, new GoogleAuthProvider());
-* const [user, setUser] = useState({});
+* const [user, setUser] = useState({}); // -> { uid, displayName, email, photoURL }
   useEffect(() => {
-    const unsube = onAuthStateChanged(auth, (currentUser) => setUser(currentUser));
+    const unsub = onAuthStateChanged(auth, (currentUser) => setUser(currentUser));
     return unsub;
   },[]);
 * {user ? <Valami /> : <Login />}
+* updateProfile(auth.currentUser, { displayName, photoURL });
 * await signOut(auth);
 ```
 

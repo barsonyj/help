@@ -178,9 +178,10 @@
     return unsub;
   },[]);
 * {user ? <Valami /> : <Login />}
-* await updateProfile(auth.currentUser, { displayName, photoURL });
-  await updateEmail(auth.currentUser, "user@example.com");
-  await updatePassword(auth.currentUser, "newPassword");
+* await updateProfile(user, { displayName, photoURL });
+  await updateEmail(user, "user@example.com");
+  await updatePassword(user, "newPassword");
+  await deleteUser(user);
 * await signOut(auth);
 ```
 

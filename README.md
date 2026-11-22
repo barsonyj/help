@@ -140,7 +140,7 @@
 * const snap = await getDoc(doc(db, "collectionID", "documentID"));
   const snap = await getDocs(collection(db, "collectionID"));
   const snap = await getDocs(query(collection(db, "collectionID"), where("field", "==", value)), orderBy("field"));
-  const lst = snap.docs.map(doc => ({ ...doc.data(), id:doc.id }));
+  const list = snap.docs.map(doc => ({ ...doc.data(), id:doc.id }));
   let date = new Date(timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000); // .toLocaleString();
 * await setDoc(doc(db, "collectionID", "documentID"), {field:value, field:value}); // ID!
   await addDoc(collection(db, "collectionID"), {field:value, field:value}); // AutoID

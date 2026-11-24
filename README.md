@@ -183,6 +183,7 @@
   await updatePassword(user, "newPassword");
   await deleteUser(user);
 * await signOut(auth);
+* try { ... } catch(error) { console.log(error.message); }
 ```
 
 <a name="fpt_formdata"></a>
